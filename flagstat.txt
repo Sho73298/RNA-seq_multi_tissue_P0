@@ -1,0 +1,7 @@
+mkdir -p qc
+
+for bam in alignments/*.bam
+do
+    sample=$(basename "$bam" .bam)
+    samtools flagstat "$bam" > qc/${sample}.flagstat.txt
+done

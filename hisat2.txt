@@ -1,0 +1,15 @@
+mkdir -p alignments
+
+for r1 in trimmed_fastq2/*_1_val_1.fq.gz
+do
+    r2=${r1/_1_val_1.fq.gz/_2_val_2.fq.gz}
+    sample=$(basename "$r1" _val_1.fq.gz)
+
+    hisat2 -p 4 \
+        -x ~/Downloads/genome/genome_index \
+        -1 "$r1" -2 "$r2" \
+    | samtools sort -@ 4 -T /tmp/${sample}.tmp \
+	-o "alignments/${sample}.bam"
+
+    samtools index "alignments/${sample}.bam"
+done

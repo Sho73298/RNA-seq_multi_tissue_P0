@@ -1,0 +1,12 @@
+conda create -n rnaseq_core \
+  -c conda-forge -c bioconda \
+  python=3.9 \
+  trim-galore \
+  hisat2 \
+  samtools \
+  stringtie
+
+conda create -n deeptools_env \
+  -c conda-forge -c bioconda \
+  python=3.9 \
+  deeptools

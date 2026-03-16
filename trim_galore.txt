@@ -1,0 +1,12 @@
+mkdir -p ~/rnaseq_project
+cd ~/rnaseq_project
+
+mkdir -p trimmed_fastq
+
+for r1 in raw_fastq/*_1.fastq.gz
+do
+    r2=${r1/_1.fastq.gz/_2.fastq.gz}
+    trim_galore --paired \
+        --output_dir trimmed_fastq \
+        $r1 $r2
+done

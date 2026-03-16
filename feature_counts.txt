@@ -1,0 +1,10 @@
+mkdir -p counts
+
+featureCounts \
+  -T 4 \
+  -p \
+  -B \
+  -C \
+  -a ~/Downloads/ref/Mus_musculus.GRCm38.101.gtf \
+  -o counts/gene_counts.txt \
+  alignments/*.bam
